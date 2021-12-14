@@ -9,6 +9,8 @@ Need to create a README but don't feel like it? Just run the readme generator an
 To view the latest changes to the README generator and get the latest work please visit the link below 
 
 - [README Generator](https://heatedtowel.github.io/readme-generator/)
+- [Video Guide](https://drive.google.com/file/d/1Hkcob6Svbz1iSJJiWb8_62gFCEwCkqAt/view?usp=sharing)
+
 
 
 ## Contributors
