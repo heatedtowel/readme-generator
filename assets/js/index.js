@@ -3,15 +3,14 @@ const fs = require('fs');
 
 
 function licenseGenerator(license) {
-  console.log(license)
   switch (license) {
-    case 'a':
+    case 'GNU':
       return `[![License: GPL v3](https://img.shields.io/badge/License-GPL-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
-    case 'b':
+    case 'Apache':
       return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
-    case 'c':
+    case 'BSD':
       return `[![License](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)`;
-    case 'd':
+    case 'MPL':
       return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`;
     case 'MIT':
       return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
@@ -23,9 +22,21 @@ function generateReadMe(answers) {
   let license = licenseGenerator(answers.license)
   return `# ${answers.title}
 
+  ${license}
+  
+  ## Table of Contents
+  **[Installation Instructions](#installation)**<br>
+  **[Usage Instructions](#usage-information)**<br>
+  **[Troubleshooting](#troubleshooting)**<br>
+  **[Contributing Guidelines](#contributing-guidelines)**<br>
+  **[Testing Instructions](#testing-instructions)**<br>
+  **[Link](#link)**<br>
+  **[Contributors](#contributors)**<br>
+
+  ## Description
+
   ${answers.description}
 
-  ${license}
   
   ## Installation
 
@@ -53,7 +64,7 @@ function generateReadMe(answers) {
   ## Contributors
   
   ${answers.github}
-  - [Github](https://github.com/${answers.github}/$answers.{title})
+  - [Github](https://github.com/${answers.github}/${answers.title})
   - [Email] (${answers.email})
   `;
 };
@@ -63,7 +74,7 @@ function init() {
     .prompt([
       {
         name: 'title',
-        message: `What is the title of your project? (please include a - in place of any spaces`,
+        message: `What is the title of your project? (please include - in place of any spaces) `,
       },
       {
         name: 'description',
@@ -87,7 +98,7 @@ function init() {
       },
       {
         type: 'list',
-        choices: ['a', 'b', 'c', 'd'],
+        choices: ['GNU', 'Apache', 'BSD', 'MPL', 'MIT'],
         name: 'license',
         message: 'Please choose a license',
       },
@@ -96,6 +107,7 @@ function init() {
         message: 'Enter your GitHub username please.',
       },
       {
+        type: 'email',
         name: 'email',
         message: 'What is your email?',
       }
